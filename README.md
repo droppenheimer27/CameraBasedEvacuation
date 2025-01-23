@@ -54,7 +54,7 @@ This structure ensures a clear separation of concerns, where each layer has a sp
 
 ---
 
-## Resilience 
+## Considerations 
 The resilience part of the solution is a bit tricky. Akka.NET has been used for communication between services, but right now it lacks persistence. This means that if a message sent to the CentralServer gets accepted and then something happens (like a crash or network issue), the message could be lost.
 
 Ideally, the solution would include message acknowledgment and an internal queue for each camera to hold messages until the CameraMonitor actor becomes available again. This would ensure that messages are not lost during temporary issues.
@@ -74,7 +74,7 @@ Ensure you have all necessary dependencies installed, including .NET SDK.
 ### Running All APIs Locally
 
 1. **CentralServer.Api**:
-    - Open the project folder for `CentralServer.Api`.
+    - Open the solution folder.
     - Run the following command to start the Central Server API:
       ```bash
       dotnet run --launch-profile http --project .\CentralServer.Api

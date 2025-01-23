@@ -14,10 +14,7 @@ public class CamerasController : ControllerBase
 {
     private readonly IActorRef _cameraActor;
     
-    // For production, a custom BackoffSupervisor should replace the generic one to better handle retries, failure conditions, 
-    // and specific business logic related to camera actor recovery. However, for demonstration purposes, 
-    // the generic BackoffSupervisor suffices to provide basic supervision and fault tolerance.
-    public CamerasController(IRequiredActor<BackoffSupervisor> actor)
+    public CamerasController(IRequiredActor<Application.Actors.RemoteCamera> actor)
     {
         _cameraActor = actor.ActorRef;
     }

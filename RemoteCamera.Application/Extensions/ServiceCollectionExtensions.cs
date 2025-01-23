@@ -33,19 +33,8 @@ public static class ServiceCollectionExtensions
                 .WithRemoting(hostname, port: int.Parse(port))
                 .WithActors((system, registry, resolver) =>
                 {
-                    var supervisorProps = BackoffSupervisor.Props(
-                        Backoff.OnFailure(
-                            resolver.Props<Actors.RemoteCamera>(),
-                            childName: nameof(Actors.RemoteCamera),
-                            maxNrOfRetries: 3,
-                            minBackoff: TimeSpan.FromSeconds(3),
-                            maxBackoff: TimeSpan.FromSeconds(30),
-                            randomFactor: 0.2
-                        )
-                    );
-                    
-                    var supervisor = system.ActorOf(supervisorProps, nameof(Actors.RemoteCamera));
-                    registry.Register<BackoffSupervisor>(supervisor);
+                    var remoteCamera = system.ActorOf(resolver.Props<Actors.RemoteCamera>());
+                    registry.Register<Actors.RemoteCamera>(remoteCamera);
                 });
         });
         
