@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Akka" Version="1.5.35" />
+      <PackageReference Include="Akka.Cluster" Version="1.5.35" />
+      <PackageReference Include="Akka.Cluster.Hosting" Version="1.5.35" />
+      <PackageReference Include="Akka.DependencyInjection" Version="1.5.35" />
+      <PackageReference Include="Akka.Hosting" Version="1.5.35" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\CameraBasedEvacuation.Domain.Shared\CameraBasedEvacuation.Domain.Shared.csproj" />
+    </ItemGroup>
+
+</Project>
