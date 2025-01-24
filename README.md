@@ -111,7 +111,7 @@ Akka.NET is a great fit for this solution because it simplifies managing multipl
 
 ### Why MediatR?
 
-MediatR was a perfect choice for this system because it helps to decouple the services, making the code cleaner and easier to maintain. Here's why it's great:
+MediatR is a perfect choice for this system because it helps to decouple the services, making the code cleaner and easier to maintain. Here's why it's great:
 
 1. **Decouples Components**: MediatR allows components to communicate without knowing about each other. It simplifies the architecture by removing direct dependencies between services, reducing the risk of tight coupling.
 
@@ -151,7 +151,7 @@ Ideally, the solution would include message acknowledgment and an internal queue
 
 However, there's a bit of a dilemma here: adding such persistence could introduce delays. This system is designed for real-time analytics, and any extra acknowledgment or queuing could significantly increase latency. The solution, therefore, needs some clarification and a decision between maintaining accuracy and reducing latency. The choice depends heavily on the throughput of the system.
 
-Given that this is an evacuation system, accuracy is likely more critical than speed. In an emergency situation, we can't afford to miss even a single update on the number of people in a zone. So, after weighing both sides, it seems like the more accurate approach is probably the right one here, even if it means a little more latency.
+Given that this is an evacuation system, accuracy is likely more critical than speed. In an emergency situation, we can't afford to miss even a single update on the number of people in a zone. So, after weighing both sides, it seems like the higher-accuracy approach is probably the right one here, even if it means a bit more latency.
 
 That said, this is something that would need to be fine-tuned in a production-ready version, but for now, since this is just a demo, the solution doesn’t include the persistence mechanisms. I’ve considered the trade-offs, but in the case of an evacuation system, accuracy should likely take precedence.
 
@@ -167,7 +167,7 @@ For now, since this is a demonstration, the solution is limited to handling non-
 
 In the current implementation, there is a potential edge case where the first update received from a camera has In = 0 and Out = 1. This would result in a negative count for people on the site, which is logically incorrect.
 
-Example Scenario
+#### Example Scenario
 Consider the following initial update:
 
 ```json
