@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.Reflection;
+using System.Text.Json.Serialization;
 using CameraBasedEvacuation.Api.Shared.Middlewares;
 using Microsoft.OpenApi.Models;
 using RemoteCamera.Application.Extensions;
@@ -64,6 +65,10 @@ public static class Bootstrapper
                     Email = "uladzislau.pavlowski@proton.me",
                 }
             });
+            
+            var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+            var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+            options.IncludeXmlComments(xmlPath);
         });
     }
     

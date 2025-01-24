@@ -19,6 +19,14 @@ public class CamerasController : ControllerBase
         _cameraActor = actor.ActorRef;
     }
 
+    /// <summary>
+    /// Add a new update from a camera.
+    /// This endpoint accepts data about people entering and leaving from a specific camera
+    /// and forwards it to the camera actor for processing.
+    /// </summary>
+    /// <returns>
+    /// Returns `201 Created` on successful submission of the update.
+    /// </returns>
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
@@ -30,11 +38,11 @@ public class CamerasController : ControllerBase
         return Created();
     }
 
-    private CameraUpdateMessage ConvertToMessage(CameraUpdateDto dto)
+    private static CameraUpdateMessage ConvertToMessage(CameraUpdateDto dto)
         => new()
         {
             Timestamp = new ValidDateTime(dto.TimeStamp),
-            In = dto.In,
-            Out = dto.Out
+            In = new NonNegativeInt(dto.In),
+            Out = new NonNegativeInt(dto.Out)
         };
 }
