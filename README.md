@@ -76,7 +76,7 @@ Both the **RemoteCamera.Api** and **CentralServer.Api** services come with Swagg
 
 ### RemoteCamera.Api Endpoints
 
-![img_1.png](img_1.png)
+![camera_management_swagger.png](camera_management_swagger.png)
 
 #### POST `/api/Cameras` - Add a New Camera State
 
@@ -92,7 +92,7 @@ Both the **RemoteCamera.Api** and **CentralServer.Api** services come with Swagg
 
 ### CentralServer.Api Endpoints
 
-![img.png](img.png)
+![central_server_swagger.png](central_server_swagger.png)
 
 #### GET `/api/CameraUpdates` - Retrieve the total number of people currently on-site.
 #### GET `/api/CameraUpdates/{cameraId}` - Retrieve the number of people currently reported by a specific camera.
